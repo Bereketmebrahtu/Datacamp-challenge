@@ -60,7 +60,7 @@ function robotMove(moves) {
 
         //if count is negative that means its moving in angticlock direction
     }
-    }
+
     if (counter % 4 == 0) {
         direction = "North";
 
@@ -75,3 +75,9 @@ function robotMove(moves) {
         direction = "East"
     }
 }
+
+return `{x: ${x}, y:${y}, bearing: ${direction}}`
+
+}
+
+console.log(robotMove('RAALAL'))
