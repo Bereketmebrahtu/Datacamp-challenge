@@ -1,31 +1,77 @@
-// Write a program that simulates the movements of a robot. The robot can have three possible movements:
 
-// turn right
-// turn left
-// advance
-// The robot is placed on a hypothetical infinite grid, 
-// facing a particular direction (north, east, south, or west) at a set of {x,y} coordinates, e.g., {3,8},
-//  with coordinates increasing to the north and east.
 
-// Create a Class Robot that contains a method execute which given a number of instructions will calculate the robot's new position, and the the direction in which it is pointing.
+// class Robot {
+//   constructor(location, direction, destination,length) {
+//     this.location = ({x:0, y:0});
+//     this.direction = direction;
+//     this.destination = destination;
+//     this.length = 10;
+//     }
+// }
 
-// Example
-// The letter-string "RAALAL" means:
+// let grid = new Robot()
 
-// Turn right
-// Advance twice
-// Turn left
-// Advance once
-// Turn left yet again
-// Say a robot starts at {7, 3} facing north. 
-// Running this stream of instructions should leave it at {9, 4} facing west.
+// let destination = new Robot({north:0, south:1});
+// let northDestination = new Robot({south:1, north:2});
+// let southDestination = new Robot({south:2, north:3});
+// let westDestination = new Robot({west:1, east:2});
+// let eastDestination = new Robot({east:2, west:3});
 
-// Inputs and Outputs
-// The argument of the execute is string in the format X Y BEARING COMMANDS. 
-The method should return a one-liner string in the format X Y BEARING. 
-In the example above, the execute argument would be 7 3 NORTH RAALAL, 
-and the method should return 9 4 WEST.
+// console.log(northDestination)
+// console.log(southDestination)
 
-// Tests
-// Javascript
-// Tests are using Jest. To run them, use the following command:
+
+function robotMove(moves) {
+    let counter = 0;
+    let direction = "";
+    let x = 0;
+    let y = 0;
+
+    //to check if direction is clockwise or anticlockwise
+
+    for(let i = 0; i < moves.length; i++) {
+        if(moves[0] == '\n') {
+            return null
+        }
+        else if (moves[i] == 'L') {
+            counter--
+        }
+        else if (moves[i] == 'R') {
+            counter++;
+        }
+        else if (moves[i] == 'A') {
+            x--;
+        }
+
+    // if count is positive then it means it is moving in a clockwise direction
+    if (counter > 0) {
+        if(counter % 4 ==0) {
+            direction = "North";
+        }
+        else if( counter % 4 == 1) {
+            direction = "East"
+        }
+        else if( counter % 4 == 2) {
+            direction = "South"
+        }
+        else if( counter % 4 == 3) {
+            direction = "West"
+        }
+
+        //if count is negative that means its moving in angticlock direction
+    }
+    }
+    if (counter % 4 == 0) {
+        direction = "North";
+
+    }
+    else if (counter % 4 == 1) {
+        direction = "West"
+    }
+    else if (counter % 4 == 2) {
+        direction = "South"
+    }
+    else if (counter % 4 == 3) {
+        direction = "East"
+    }
+}
